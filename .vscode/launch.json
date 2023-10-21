@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Jpacrudsample1Application<jpacrudsample1>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.jpacrudsample1.jpacrudsample1.Jpacrudsample1Application",
+            "projectName": "jpacrudsample1",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

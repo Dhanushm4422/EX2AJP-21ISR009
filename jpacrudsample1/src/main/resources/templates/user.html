@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http:thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .outer-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url('img/1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-management {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .add-user-link {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .user-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .card {
+            flex-basis: calc(33.33% - 20px);
+            margin: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+
+        .card-text {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .card-link {
+            color: #007bff;
+            text-decoration: none;
+            display: inline-block;
+            margin-right: 10px;
+            transition: color 0.2s;
+        }
+
+        .card-link:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="outer-container">
+    <div class="container">
+        <div class="user-management">
+            <h1>User Management</h1>
+            <a class="add-user-link" th:href="@{/add_user}">Add New User</a>
+        </div>
+        <div class="user-section">
+            <section th:each="user:${users}">
+                <div class="card">
+                    <div class="card-body">
+                      <h1 class="card-title" th:text="'Id: '+${user.id}"></h1>
+                      <h1 class="card-title" th:text="'Name: '+${user.name}"></h1>
+                      <h2 class="card-subtitle" th:text="'Age: '+${user.age}"></h2>
+                      <p class="card-text" th:text="'Email: '+${user.email}"></p>
+                      <p class="card-text" th:text="'Phone: '+${user.phoneNumber}"></p>
+                      <p class="card-text" th:text="'Gender: '+${user.gender}"></p>
+                      <p class="card-text" th:text="'Password: '+${user.password}"></p>
+                      <a class="card-link" th:href="@{'delete/user' + ${user.id}}">Delete User</a>
+                      <a class="card-link" th:href="@{'update/user' + ${user.id}}">Update User</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+</body>
+</html>
